@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Luka Salipur | portfolio</title>
+        <meta name="viewport" content="width=width-device, initial-scale=1.0"> 
+        <link rel="stylesheet" href="{% static 'style.css' %}">
+        <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
+        <link href="//db.onlinewebfonts.com/c/0a6ee448d1bd65c56f6cf256a7c6f20a?family=Bahnschrift" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <header class="wrapper">
+            <a href="{% url 'index' %}"><h3>Luka <span>Salipur</span></h3></a>
+            <nav>
+                <ul>
+                    {% if request.user.is_authenticated %}
+                        <li>
+                            <form class="navbar" action="{% url 'logout' %}" method="post">
+                                {% csrf_token %}
+                                <button type="submit">Logout</button>
+                            </form>
+
+                        </li>
+                        <li>
+                            <div class="navbar">
+                                <a href="{% url 'create' %}"> <button type="submit">Add</button></a>
+                            </div>
+                        </li>
+                    {% else %}
+                    <li>
+                        <div class="navbar">
+                            <a href="{% url 'login' %}"> <button type="submit">Login</button></a>
+                        </div>
+                    </li>
+                    {% endif %}
+                   
+                </ul>
+            </nav>
+        </header>
+        <div class="container">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </body>
+    <script
+  src="https://code.jquery.com/jquery-3.5.0.js"
+  integrity="sha256-r/AaFHrszJtwpe+tHyNi/XCfMxYpbsRg2Uqn0x3s2zc="
+  crossorigin="anonymous"></script>
+
+  <script>
+    $("#upfile1").click(function () {
+    $("#file1").trigger('click');
+});
+</script>
+</html>
+

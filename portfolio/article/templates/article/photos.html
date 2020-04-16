@@ -1,0 +1,23 @@
+
+{% extends 'base_layout.html' %}
+
+
+
+{% block content %}
+
+
+<div class="photos">
+    <h1>All Photos</h1>
+    <div class="images-wrapper">
+
+    {% for image in photos %}
+        <div class="images-block">
+            <img src="{{image.photo.url}}"></img>
+        </div>
+    {% endfor %}
+
+</div>
+ 
+</div>
+
+{% endblock %}
